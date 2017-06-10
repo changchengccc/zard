@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bouc</title>
     <script src="js/jquery-3.2.1.min.js"></script>
     <style>
         *{
@@ -33,6 +33,7 @@
            position: fixed;
            left: -275px;
            top: 85%;
+           display: none;
 
         }
        #music img
@@ -350,8 +351,37 @@ font-size: 16px}
         {
             margin-top: -15px;
         }
+        #search
+        {
+            position: absolute;
+            top: 10px;
+            right: 230px;
+        }
+        #search input:nth-child(2)
+        {
+            width: 100px;
+            height: 25px;
+            border: 0px solid #000;
+            border-radius: 10px;
+            color: #2a84ff;
+        }
+        #search input:nth-child(2):focus
+        {
+            width: 150px;
+            border: 2px solid #8df0b1;
 
+        }
+        #search input:nth-last-child(1)
+        {
+            width: 50px;
+            height: 28px;
+            border: 0 solid #000;
+            border-radius: 10px;
+            background-color: #82dda3;
+            color: white;
+        }
     </style>
+
     <!--滚动条-->
     <script>
         window.onload=function()
@@ -407,10 +437,32 @@ font-size: 16px}
 
         }
     </script>
+
     <script>
 
 
      $(document).ready(function(){
+
+             function replay()
+             {
+                 var audio = document.getElementById('music1');
+                 audio.currentTime=0;
+             }
+             function play(){
+             var audio = document.getElementById('music1');
+             if(audio!==null){
+             //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+             if(audio.paused)
+         {
+             audio.play();//audio.play();// 这个就是播放
+         }else
+         {
+             audio.pause();// 这个就是暂停
+         }
+         }
+         }
+
+
          var key=1;
          $('.arrow').click(function(){
             if(key==1)
@@ -438,13 +490,29 @@ font-size: 16px}
 
            switch(key2)
            {
-               case 1: $('#information').find('p').replaceWith('<p>告诉你一个秘密</p>');key2=2; break;
-                 case  2: $('#information').find('p').replaceWith('<p>真的想知道？</p>');key2=3;break;
-               case 3: $('#information').find('p').replaceWith('<p>you are a good man~</p>');
+               case 1: $('#information').find('p').replaceWith('<p>想听歌吗</p>')
+
+                   var truthBeTold = window.confirm("zard");
+                   if (truthBeTold) {
+                       play();
+                       $('#music').css('display','block');
+                       key2=2; break;
+                   }
+
+
+                      else{
+                       alert('强制播放');
+                       play();
+                       $('#music').css('display','block');
+                   }
+
+
+                 case  2: $('#information').find('p').replaceWith('<p>敞开你的心扉</p>');key2=3;break;
+               case 3: $('#information').find('p').replaceWith('<p>无论何时</p>');
                    $('#information').css('width','200px');
                    key2=4;break;
-               case 4: $('#information').find('p').replaceWith('<p>sa yo na la ~</p>');key2=5;break;
-              case 5:$('#information').find('p').replaceWith('<p>Best wishes!</p>');key2=1;break;
+               case 4: $('#information').find('p').replaceWith('<p>相信你的梦想</p>');key2=5;break;
+              case 5:$('#information').find('p').replaceWith('<p>Best wishes!</p>');break;
 
            }
          })
@@ -452,6 +520,8 @@ font-size: 16px}
 
      });
     </script>
+
+    <!--轮播图-->
     <script type="text/javascript">
         $(document).ready(function() {
             var length,
@@ -539,15 +609,38 @@ font-size: 16px}
     </script>
 </head>
 <body>
+<div style='overflow:hidden' id="search">
+    <form onsubmit="return baiduWithHttps(this)" action="http://www.baidu.com/baidu" target="_blank">
+        <input name="tn" type="hidden" value="SE_zzsearchcode_shhzc78w">
+        <input class='bdtext' type="text"  onfocus="checkHttps" name="word"  size="30" value="   Zard">
+        <input class='bdbtn' type="submit"value="搜索">
+    </form>
+
+    <script>
+        function checkHttps () {
+            BaiduHttps.useHttps();
+        };
+        function baiduWithHttps (formname) {
+            var data = BaiduHttps.useHttps();
+            if (data.s === 0) {
+                return true;
+            }
+            else {
+                formname.action = 'https://www.baidu.com/baidu' + '?ssl_s=1&ssl_c' + data.ssl_code;
+                return true;
+            }
+        };
+    </script>
+</div>
+
 <!--音乐播放器-->
 <div id="music">
-    <img src="img/2.png" alt="404">
+   <!-- <img src="img/2.png" alt="404">-->
     <div class="arrow" >
        <p>></p>
     </div>
-    <audio  controls="controls" >
-        <source src="music/next.mp3" type="audio/mp3">
-        <source src="music/2.mp3"  type="audio/mp3">
+    <audio  id="music1" controls="controls"  >
+        <source src="music/zard3.mp3"  type="audio/mp3">
     </audio>
 </div>
  <!--导航栏-->
@@ -565,16 +658,16 @@ font-size: 16px}
 <div class="slider">
     <ul class="slider-main">
         <li class="slider-panel">
-            <img src="img/album_1.jpg" alt="">
+            <img src="img/3.jpg" alt="">
         </li>
         <li class="slider-panel">
-            <img src="img/album_2.jpg" alt="">
+            <img src="img/zard3.jpg" alt="">
         </li>
         <li class="slider-panel">
-            <img src="img/album_3.jpg" alt="">
+            <img src="img/zard2.jpg" alt="">
         </li>
         <li class="slider-panel">
-            <img src="img/album_4.jpg" alt="">
+            <img src="img/kkkk02.jpg" alt="">
         </li>
     </ul>
     <div class="slider-extra">
@@ -602,19 +695,21 @@ font-size: 16px}
 </div>
 
 <!--3D相册-->
-<ul id="album">
+<!--<ul id="album">
     <li><img src="img/album_1.jpg" alt=""></li>
     <li><img src="img/album_2.jpg" alt=""></li>
     <li><img src="img/album_3.jpg" alt=""></li>
     <li><img src="img/album_4.jpg" alt=""></li>
     <li><img src="img/album_5.jpg" alt=""></li>
     <li><img src="img/album_6.jpg" alt=""></li>
-</ul>
-    <div id="information"><p>hi~</p> <img src="img/move2.gif" alt="" class="move">
+</ul>-->
+    <div id="information"><p>想听歌吗</p> <img src="img/move2.gif" alt="" class="move">
 </div>
 <div id="per">
     <p>1</p>
 </div>
+
+
 </body>
 </html>
 
