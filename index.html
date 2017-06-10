@@ -1,2 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        body {
+            width: 100%;
+            cursor: url("img/bc.ico"),auto;
+            background:url(img/bgimg.jpg) no-repeat ;
+            background-size: cover;
+        }
+        li
+        {
+    text-decoration: none;
+    display: inline-block;
+}
+        p{
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            padding-top: 30px;
+        }
+       #music{
+            width:275px;
+            height: 80px;
+           background: #b0a2a2;
+           position: fixed;
+           left: -275px;
+           top: 85%;
 
-<h1>love zard</h1>
+        }
+       #music img
+       {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 275px;
+       }
+        .arrow{
+            width: 16px;
+            height: 80px;
+            background-color: black;
+            opacity: 0.6;
+            margin-left: 275px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        audio
+        {
+            position: absolute;
+            bottom: 0;
+            width: 275px;
+        }
+        #nav
+        {
+            width: 800px;
+            height: 100px;
+            position: absolute;
+            left: 240px;
+            top: 60px;
+
+        }
+         #nav ul li
+        {
+        display: inline-block;
+        text-decoration: none;
+        height: 40px;
+        width: 60px;
+        margin-top: 50px;
+        padding-left: 40px;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+
+    }
+        #nav ul li:hover{
+          background-color: rgba(130, 221, 163, 0.35);
+
+        }
+        #nav img
+        {
+            position: absolute;
+            top: -50px;
+            left: -180px;
+        }
+        .contain
+         {
+
+    margin-left:20%;
+}
+        .contains
+        {
+            width: 800px;
+            height: 180px;
+            border-radius: 4%;
+            margin-top: 20px;
+            background-color: rgba(218, 228, 218, 0.3);
+
+        }
+        .contains li
+        {
+           border-radius: 5px;
+            width: 800px;
+            height: 30px;
+            background-color: #fcfefe;
+            
+        }
+
+/*3D相册*/
+        #album
+        {
+            width: 100px;
+            height: 150px;
+            position: fixed;
+            bottom: 40px;
+            left: 85%;
+           /* margin-left: -75px;*//*让其居中，left50%,ml为宽度的一半（往左边移动）*/
+            transform-style: preserve-3d;
+
+            animation: sport 30s linear/*匀速*/ 0s/*延迟*/ infinite/*无穷的*/ normal;
+            z-index: 99;
+        }
+        #album:hover
+        {
+            animation-play-state: paused;
+
+        }
+        #album:hover li img
+        {
+
+            opacity: 0.5;
+        }
+        #album li:hover img
+        {
+            opacity: 1;
+            width: 115px;
+            height: 155px;
+        }
+
+        #album li
+        {
+            list-style: none;
+            width: 100px;
+            height: 150px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #album li:nth-child(1)
+        {
+            transform: rotateY(60deg) transLateZ(100px);
+          background-color: #c2c2c2;
+
+        }
+        #album li:nth-child(2)
+        {
+            transform: rotateY(120deg) transLateZ(100px);
+            background-color: #c2c2c2;
+
+        }
+        #album li:nth-child(3)
+            {
+
+            transform: rotateY(180deg) transLateZ(100px);
+            background-color:#c2c2c2;
+        }
+        #album li:nth-child(4)
+                {
+
+            transform: rotateY(240deg) transLateZ(100px);
+            background-color:#c2c2c2;
+        }
+        #album li:nth-child(5)
+                    {
+
+            transform: rotateY(300deg) transLateZ(100px);
+            background-color: #c2c2c2;
+        }
+        #album li:nth-child(6)
+                        {
+
+            transform: rotateY(360deg) transLateZ(100px);
+            background-color: #c2c2c2;
+        }
+        #album img
+        {
+            width: 100px;
+            height: 150px;
+            border: 1px solid pink;
+        }
+        .move
+        {
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+            position: absolute;
+            top: 10px;
+            right: 0;
+            animation: move 19s linear 0s infinite alternate;
+        }
+
+@keyframes sport {
+    from
+    {
+      transform:rotateX(-10deg) rotateY(0deg);
+    }
+    to {transform: rotateX(-10deg) rotateY(360deg)}
+}
+@keyframes move {
+   from
+   {
+       right: 0;
+       top: 0;
+   }
+    to
+    {
+        right: 0;
+        top: 60%;
+    }
+}
+        @keyframes move2 {
+            from
+            {
+                right:15px;
+                top: 0;
+            }
+            to
+            {
+                right: 15px;
+                top: 50%;
+            }
+        }
+#information
+{
+    width: 80px;
+    height: 30px;
+    background-color: rgba(176, 162, 162, 0.64);
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    animation: move2 19s linear 0s infinite alternate;
+    cursor: pointer;
+}
+
+#information p{
+    margin-top: -25px;
+font-size: 16px}
+
+        a {
+            text-decoration: none;
+        }
+        ul {
+            list-style: outside none none;
+        }
+        .slider, .slider-panel img, .slider-extra {
+            width: 880px;
+            height: 300px;
+
+        }
+        .slider img
+        {
+            border: 1px solid #8df0b1;
+            border-radius: 1%;
+
+        }
+        .slider {
+            text-align: center;
+            margin-left: -200px;
+            margin-top: 150px;
+            position: relative;
+        }
+        .slider-panel, .slider-nav, .slider-pre, .slider-next {
+            position: absolute;
+            z-index: 8;
+        }
+        .slider-panel {
+            position: absolute;
+        }
+        .slider-panel img {
+            border: none;
+        }
+        .slider-extra {
+            position: relative;
+        }
+        .slider-nav {
+            margin-left: 400px;
+            position: absolute;
+            width: 150px;
+            left: 50%;
+            bottom: 4px;
+        }
+        .slider-nav li {
+            background: white;
+            border: 1px solid rgba(164, 32, 52, 0.47);
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 0 4px;
+            overflow: hidden;
+            text-align: center;
+            display: inline-block;
+            height:18px;
+            line-height: 18px;
+            width: 18px;
+        }
+        .slider-nav li:hover {
+            background: #b0a2a2;
+        }
+        .slider-page a{
+            background: rgba(0, 0, 0, 0.2);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000,endColorstr=#33000000);
+            color: #fff;
+            text-align: center;
+            display: block;
+            font-family: "simsun";
+            font-size: 22px;
+            width: 28px;
+            height: 62px;
+            line-height: 62px;
+            margin-top: -31px;
+            position: absolute;
+            top: 50%;
+        }
+        .slider-page a:hover {
+            background: rgba(0, 0, 0, 0.4);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000);
+        }
+        #per{
+
+            height: 48px;
+            width: 48px;
+            text-align: center;
+            position: fixed;
+            right: 10px;
+            bottom: 30%;
+            border: 4px solid purple;
+            cursor: pointer;
+            border-radius: 60%;
+            display: none;
+        }
+
+        #per p
+        {
+            margin-top: -15px;
+        }
+
+    </style>
+    <!--滚动条-->
+    <script>
+        window.onload=function()
+        {
+
+            $(function ()
+            {
+                showScroll();
+                function showScroll()
+                {
+                    $(window).scroll(function ()
+                    {
+                        var height=$(window).height();
+                        var scrollValue = $(window).scrollTop();
+
+                        if(scrollValue>10)
+                        {
+                            $('#per').fadeIn();
+                            $('#per').find('p').html((parseInt(scrollValue*100/height)+8));
+                        }
+                        else
+                        {
+                            $('#per').fadeOut()
+                        }
+
+                        if(0<scrollValue<100)
+                        {
+                            $('#per').css('border-color','red');
+                           scrollValue= $(window).scrollTop();
+                        }
+                        else if(100<scrollValue<200)
+                        {
+                            $('#per').css('border-color','purple');
+                        }
+                        return false;
+
+
+                    });
+
+
+
+                    $('#per').click(function () {
+                        $("html,body").animate({scrollTop: 0}, 200);
+                    });
+                }
+            });
+            $('#per').mouseover(function(){
+                $('#per').find('p').html('↑').css('color','red');
+            });
+            $('#per').mouseout(function(){
+                $('#per').find('p').css('color','white');
+            });
+
+        }
+    </script>
+    <script>
+
+
+     $(document).ready(function(){
+         var key=1;
+         $('.arrow').click(function(){
+            if(key==1)
+            {
+                $('#music').animate({left:'0px'},600);
+                $('p').replaceWith('<p><</p>');
+                key=0;
+            }
+             else
+            {
+                    $('#music').animate({left:'-275px'});
+                    $('p').replaceWith('<p>></p>');
+                key=1;
+            }
+});
+            var key2=1;
+         $('#information').click(function(){
+
+         $('#information').css(
+                 {
+                     'width':'150px',
+                     'background':'pink'
+                 }
+         );
+
+           switch(key2)
+           {
+               case 1: $('#information').find('p').replaceWith('<p>告诉你一个秘密</p>');key2=2; break;
+                 case  2: $('#information').find('p').replaceWith('<p>真的想知道？</p>');key2=3;break;
+               case 3: $('#information').find('p').replaceWith('<p>you are a good man~</p>');
+                   $('#information').css('width','200px');
+                   key2=4;break;
+               case 4: $('#information').find('p').replaceWith('<p>sa yo na la ~</p>');key2=5;break;
+              case 5:$('#information').find('p').replaceWith('<p>Best wishes!</p>');key2=1;break;
+
+           }
+         })
+
+
+     });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var length,
+                    currentIndex = 0,
+                    interval,
+                    hasStarted = false, //是否已经开始轮播
+                    t = 3000; //轮播时间间隔
+            length = $('.slider-panel').length;
+            //将除了第一张图片隐藏
+            $('.slider-panel:not(:first)').hide();
+            //将第一个slider-item设为激活状态
+            $('.slider-item:first').addClass('slider-item-selected');
+            //隐藏向前、向后翻按钮
+            $('.slider-page').hide();
+            //鼠标上悬时显示向前、向后翻按钮,停止滑动，鼠标离开时隐藏向前、向后翻按钮，开始滑动
+            $('.slider-panel, .slider-pre, .slider-next').hover(function() {
+                stop();
+                $('.slider-page').show();
+            }, function() {
+                $('.slider-page').hide();
+                start();
+            });
+            $('.slider-item').hover(function(e) {
+                stop();
+                var preIndex = $(".slider-item").filter(".slider-item-selected").index();
+                currentIndex = $(this).index();
+                play(preIndex, currentIndex);
+            }, function() {
+                start();
+            });
+            $('.slider-pre').unbind('click');
+            $('.slider-pre').bind('click', function() {
+                pre();
+            });
+            $('.slider-next').unbind('click');
+            $('.slider-next').bind('click', function() {
+                next();
+            });
+            /**
+             * 向前翻页
+             */
+            function pre() {
+                var preIndex = currentIndex;
+                currentIndex = (--currentIndex + length) % length;
+                play(preIndex, currentIndex);
+            }
+            /**
+             * 向后翻页
+             */
+            function next() {
+                var preIndex = currentIndex;
+                currentIndex = ++currentIndex % length;
+                play(preIndex, currentIndex);
+            }
+            /**
+             * 从preIndex页翻到currentIndex页
+             * preIndex 整数，翻页的起始页
+             * currentIndex 整数，翻到的那页
+             */
+            function play(preIndex, currentIndex) {
+                $('.slider-panel').eq(preIndex).fadeOut(500)
+                        .parent().children().eq(currentIndex).fadeIn(1000);
+                $('.slider-item').removeClass('slider-item-selected');
+                $('.slider-item').eq(currentIndex).addClass('slider-item-selected');
+            }
+            /**
+             * 开始轮播
+             */
+            function start() {
+                if(!hasStarted) {
+                    hasStarted = true;
+                    interval = setInterval(next, t);
+                }
+            }
+            /**
+             * 停止轮播
+             */
+            function stop() {
+                clearInterval(interval);
+                hasStarted = false;
+            }
+            //开始轮播
+            start();
+        });
+    </script>
+</head>
+<body>
+<!--音乐播放器-->
+<div id="music">
+    <img src="img/2.png" alt="404">
+    <div class="arrow" >
+       <p>></p>
+    </div>
+    <audio  controls="controls" >
+        <source src="music/next.mp3" type="audio/mp3">
+        <source src="music/2.mp3"  type="audio/mp3">
+    </audio>
+</div>
+ <!--导航栏-->
+<div id="nav">
+    <a href="#" title="Hello|World!"><img src="img/logo.png" alt=""></a>
+    <ul>
+        <li>Cosplay</li>
+        <li>动漫</li>
+        <li>资讯</li>
+        <li>音乐</li>
+        <li>图库</li>
+    </ul>
+</div>
+<!--轮播图-->
+<div class="slider">
+    <ul class="slider-main">
+        <li class="slider-panel">
+            <img src="img/album_1.jpg" alt="">
+        </li>
+        <li class="slider-panel">
+            <img src="img/album_2.jpg" alt="">
+        </li>
+        <li class="slider-panel">
+            <img src="img/album_3.jpg" alt="">
+        </li>
+        <li class="slider-panel">
+            <img src="img/album_4.jpg" alt="">
+        </li>
+    </ul>
+    <div class="slider-extra">
+        <ul class="slider-nav">
+            <li class="slider-item"></li>
+            <li class="slider-item"></li>
+            <li class="slider-item"></li>
+            <li class="slider-item"></li>
+        </ul>
+        <div class="slider-page">
+            <a class="slider-pre" href="javascript:;;"><</a>
+            <a class="slider-next" href="javascript:;;">></a>
+        </div>
+    </div>
+</div>
+
+<!--文章-->
+<div class="contain">
+
+    <div class="contains"><li>1</li></div>
+    <div class="contains"><li>1</li></div>
+    <div class="contains"><li>1</li></div>
+    <div class="contains"><li>1</li></div>
+
+</div>
+
+<!--3D相册-->
+<ul id="album">
+    <li><img src="img/album_1.jpg" alt=""></li>
+    <li><img src="img/album_2.jpg" alt=""></li>
+    <li><img src="img/album_3.jpg" alt=""></li>
+    <li><img src="img/album_4.jpg" alt=""></li>
+    <li><img src="img/album_5.jpg" alt=""></li>
+    <li><img src="img/album_6.jpg" alt=""></li>
+</ul>
+    <div id="information"><p>hi~</p> <img src="img/move2.gif" alt="" class="move">
+</div>
+<div id="per">
+    <p>1</p>
+</div>
+</body>
+</html>
+
+
